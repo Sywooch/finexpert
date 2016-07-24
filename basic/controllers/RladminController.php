@@ -7,11 +7,11 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\SignupForm;
 
-class SiteController extends Controller
+class RladminController extends Controller
 {
-        public $layout = 'user';
+    public $layout = 'admin';
     /**
      * @inheritdoc
      */
@@ -61,7 +61,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (!Yii::$app->user->isGuest) {
+            return $this->render('index');
+        }else{
+            return $this->redirect('login');
+        }
+        
     }
 
     /**
@@ -84,7 +89,26 @@ class SiteController extends Controller
         ]);
     }
 
-    
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
 
     /**
      * Logout action.
