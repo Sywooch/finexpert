@@ -89,3 +89,12 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+/* TOP, LEFT, RIGHT and BUTTON marging */
+.top-20{
+    margin-top: 20px;;
+}
+.left-5{
+    margin-left: 5px;
+}
+/* TOP, LEFT, RIGHT and BUTTON marging */

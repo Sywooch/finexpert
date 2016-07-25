@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\SignupForm;
+use app\models\User;
+use app\models\AuthRule;
+use app\models\AuthItem;
 
 class RladminController extends Controller
 {
@@ -20,12 +23,21 @@ class RladminController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['login'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['index', 'users', 'roles', 'create-role', 'assign-role'],
+                        'allow' => true,
+                        'roles' => ['admin'],
                     ],
                 ],
             ],
@@ -64,7 +76,7 @@ class RladminController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->render('index');
         }else{
-            return $this->redirect('login');
+            return $this->redirect('rladmin/login');
         }
         
     }
@@ -79,7 +91,7 @@ class RladminController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
+        
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
@@ -94,7 +106,7 @@ class RladminController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
+    /*public function actionSignup()
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
@@ -108,7 +120,7 @@ class RladminController extends Controller
         return $this->render('signup', [
             'model' => $model,
         ]);
-    }
+    }*/
 
     /**
      * Logout action.
@@ -123,30 +135,134 @@ class RladminController extends Controller
     }
 
     /**
-     * Displays contact page.
-     *
-     * @return string
-     */
-    public function actionContact()
+    *
+    * Users action
+    * @return string
+    */
+    public function actionUsers()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $users = User::find()->all();
+        
+        return $this->render('users',[
+                'users' => $users,
 
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+            ]);
     }
 
     /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
+    *
+    * Roles action
+    * @return string
+    */
+    public function actionRoles()
     {
-        return $this->render('about');
+        $roles = AuthItem::find()->all();
+        
+        return $this->render('roles',[
+                'roles' => $roles,
+
+            ]);
+    }
+
+    /**
+    * Create role action
+    * @return string
+    */
+    public function actionCreateRole()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['name']) || !isset($post_data)) {
+                    $error[] = 'The name or desciption is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $role = Yii::$app->authManager->createRole(trim($post_data['name']));
+                $role->description = trim($post_data['data']);
+                Yii::$app->authManager->add($role);
+
+                return $this->renderAjax('role/table/_roles',[
+                    'roles' => AuthItem::find()->all(),
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
+    }
+    
+    /**
+    * Assign role action
+    * @return string
+    */
+    public function actionAssignRole()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                
+
+                if (!isset($post_data['user'])) {
+                    $error[] = 'The user is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $user = User::findOne($post_data['user']);
+
+                if ($user == NULL) {
+                    $error[] = 'The user is not found!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                Yii::$app->authManager->revokeAll($user->id);
+                if (isset($post_data['roles'])) {
+                    foreach ($post_data['roles'] as $roleName) {
+                        $role = Yii::$app->authManager->getRole($roleName);
+                        Yii::$app->authManager->assign($role, $user->id);    
+                    }
+                }
+                
+                
+
+                $info[] = 'The roles is saved';
+
+                return $this->renderAjax('info',[
+                    'info' => $info,
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
     }
 }
