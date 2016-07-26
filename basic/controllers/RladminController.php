@@ -11,10 +11,13 @@ use app\models\SignupForm;
 use app\models\User;
 use app\models\AuthRule;
 use app\models\AuthItem;
+use app\models\Offer;
 
 class RladminController extends Controller
 {
     public $layout = 'admin';
+
+
     /**
      * @inheritdoc
      */
@@ -23,6 +26,7 @@ class RladminController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['index', 'users', 'roles', 'create-role', 'assign-role','logout','login'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -33,13 +37,25 @@ class RladminController extends Controller
                         'actions' => ['login'],
                         'allow' => true,
                         'roles' => ['?'],
+                        
                     ],
                     [
-                        'actions' => ['index', 'users', 'roles', 'create-role', 'assign-role'],
+                        'actions' => ['index','users', 'roles', 'create-role', 'assign-role','offers'],
                         'allow' => true,
                         'roles' => ['admin'],
+                        'ips' => ['127.0.0.1','82.208.100.67'],
                     ],
+
                 ],
+                
+                'denyCallback' => function ($rule, $action) {
+                    if (!Yii::$app->user->isGuest) {
+                        throw new \Exception('You are not allowed to access this page');
+                    }else{
+                        return $action->controller->redirect('login');    
+                    }
+                    
+                }
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -47,8 +63,13 @@ class RladminController extends Controller
                     'logout' => ['post'],
                 ],
             ],
+
+            
         ];
     }
+
+
+
 
     /**
      * @inheritdoc
@@ -74,9 +95,11 @@ class RladminController extends Controller
     public function actionIndex()
     {
         if (!Yii::$app->user->isGuest) {
+            //var_dump(Yii::$app->request->userIP);
+            //die();
             return $this->render('index');
         }else{
-            return $this->redirect('rladmin/login');
+            return $this->redirect('login');
         }
         
     }
@@ -89,12 +112,12 @@ class RladminController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect('index');
         }
         
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect('index');
         }
         return $this->render('login', [
             'model' => $model,
@@ -131,7 +154,7 @@ class RladminController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect('login');
     }
 
     /**
@@ -264,5 +287,20 @@ class RladminController extends Controller
         else{
             return $this->redirect(['index']);
         }
+    }
+
+    /**
+    *
+    * Offers action
+    * @return string
+    */
+    public function actionOffers()
+    {
+        $offers = Offer::find()->all();
+        
+        return $this->render('offers',[
+                'offers' => $offers,
+
+            ]);
     }
 }

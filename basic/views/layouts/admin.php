@@ -37,6 +37,7 @@ RladminAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/rladmin/index'], 'visible' => Yii::$app->user->can('admin')],
+            ['label' => 'Offers', 'url' => ['/rladmin/offers'], 'visible' => Yii::$app->user->can('admin')],
             ['label' => 'Users', 'url' => ['/rladmin/users'], 'visible' => Yii::$app->user->can('admin')],
             ['label' => 'Roles', 'url' => ['/rladmin/roles'], 'visible' => Yii::$app->user->can('admin')],
             
