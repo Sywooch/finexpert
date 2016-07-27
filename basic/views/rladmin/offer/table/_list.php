@@ -7,6 +7,9 @@ if ($offers != NULL) {
 			echo Html::beginTag('thead');
 				echo Html::beginTag('tr');
 					echo Html::beginTag('th');
+						echo 'Image';
+					echo Html::endTag('th');
+					echo Html::beginTag('th');
 						echo 'Name';
 					echo Html::endTag('th');
 					echo Html::beginTag('th');
@@ -35,6 +38,11 @@ if ($offers != NULL) {
 			echo Html::beginTag('tbody');
 				foreach ($offers as $offer) {
 					echo Html::beginTag('tr');
+						echo Html::beginTag('td');
+							echo $this->render('../form/_load_images',[
+									'offer' => $offer,
+								]);
+						echo Html::endTag('td');
 						echo Html::beginTag('td');
 							echo $offer->name;
 						echo Html::endTag('td');

@@ -6,12 +6,15 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use app\models\LoginForm;
 use app\models\SignupForm;
 use app\models\User;
 use app\models\AuthRule;
 use app\models\AuthItem;
 use app\models\Offer;
+use app\models\UploadForm;
+
 
 class RladminController extends Controller
 {
@@ -26,7 +29,7 @@ class RladminController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'users', 'roles', 'create-role', 'assign-role','logout','login'],
+                'only' => ['index', 'users', 'roles', 'create-role', 'assign-role','logout','login', 'offers', 'load-form-new-offer', 'save-new-offer', 'load-form-edit-offer', 'save-offer', 'load-form-edit-logo', 'save-logo', 'reload-list-offer'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -40,7 +43,7 @@ class RladminController extends Controller
                         
                     ],
                     [
-                        'actions' => ['index','users', 'roles', 'create-role', 'assign-role', 'offers', 'load-form-new-offer'],
+                        'actions' => ['index','users', 'roles', 'create-role', 'assign-role', 'offers', 'load-form-new-offer', 'save-new-offer', 'load-form-edit-offer', 'save-offer', 'load-form-edit-logo', 'save-logo', 'reload-list-offer'],
                         'allow' => true,
                         'roles' => ['admin'],
                         'ips' => ['127.0.0.1','82.208.100.67'],
@@ -515,6 +518,116 @@ class RladminController extends Controller
                             'error' => $error,
                         ]);
                 }
+                return $this->renderAjax('info',[
+                        'info' => $info,
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
+    }
+
+    /**
+    * Load form edit logo
+    * @return string
+    */
+    public function actionLoadFormEditLogo()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+                
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['offer'])) {
+                    $error[] = 'The offer is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $offer = Offer::findOne($post_data['offer']);
+
+                if ($offer == NULL) {
+                    $error[] = 'The offer is NULL';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+                
+
+                return $this->renderAjax('offer/modal/form/_load_logo',[
+                        'offer' => $offer,
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
+    }
+
+    /**
+    * Save logo
+    * @return string
+    */
+    public function actionSaveLogo()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+
+               
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                
+                if (!isset($post_data['offer'])) {
+                    $error[] = 'The offer is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $offer = Offer::findOne($post_data['offer']);
+                if ($offer == NULL) {
+                    $error[] = 'The offer is NULL';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $model = new UploadForm();
+
+                $model->imageFile = UploadedFile::getInstanceByName('imageFiles');
+
+                if ($model->upload($offer->id)) {
+                    $info[] = 'The logo is saved';
+                }else{
+                    $error[] = 'The logo is not saved';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                                
                 return $this->renderAjax('info',[
                         'info' => $info,
                     ]);
