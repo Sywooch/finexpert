@@ -40,7 +40,7 @@ class RladminController extends Controller
                         
                     ],
                     [
-                        'actions' => ['index','users', 'roles', 'create-role', 'assign-role','offers'],
+                        'actions' => ['index','users', 'roles', 'create-role', 'assign-role', 'offers', 'load-form-new-offer'],
                         'allow' => true,
                         'roles' => ['admin'],
                         'ips' => ['127.0.0.1','82.208.100.67'],
@@ -302,5 +302,227 @@ class RladminController extends Controller
                 'offers' => $offers,
 
             ]);
+    }
+    
+    /**
+    * Load form new offer
+    * @return string
+    */
+    public function actionLoadFormNewOffer()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                
+
+                return $this->renderAjax('offer/modal/form/_new_form',[
+                    
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
+    }
+    
+    /**
+    * Save new offer
+    * @return string
+    */
+    public function actionSaveNewOffer()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['Offer'])) {
+                    $error[] = 'The Offer data is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $new_offer = new Offer();
+                if ($new_offer->load($post_data) && $new_offer->save()) {
+                    $info[] = 'The new offer is saved';
+                }else{
+                    $error[] = 'The offer is not saved';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+                return $this->renderAjax('info',[
+                        'info' => $info,
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
+    }
+    
+    /**
+    * Re-Load list of offers
+    * @return string
+    */
+    public function actionReloadListOffer()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                
+
+                return $this->renderAjax('offer/table/_list',[
+                        'offers' => Offer::find()->all(),
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
+    }
+
+    /**
+    * Load form edit offer
+    * @return string
+    */
+    public function actionLoadFormEditOffer()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+                
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['offer'])) {
+                    $error[] = 'The offer is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $offer = Offer::findOne($post_data['offer']);
+
+                if ($offer == NULL) {
+                    $error[] = 'The offer is NULL';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+                
+
+                return $this->renderAjax('offer/modal/form/_edit_form',[
+                        'offer' => $offer,
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
+    }
+
+    /**
+    * Save offer
+    * @return string
+    */
+    public function actionSaveOffer()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+
+                if (!isset($post_data)) {
+                    $error[] = 'The POST DATA is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['Offer'])) {
+                    $error[] = 'The Offer data is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['offer'])) {
+                    $error[] = 'The offer is not set!';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $offer = Offer::findOne($post_data['offer']);
+                if ($offer == NULL) {
+                    $error[] = 'The offer is NULL';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if ($offer->load($post_data) && $offer->save()) {
+                    $info[] = 'The offer is saved';
+                }else{
+                    $error[] = 'The offer is not saved';
+                    return $this->renderAjax('error',[
+                            'error' => $error,
+                        ]);
+                }
+                return $this->renderAjax('info',[
+                        'info' => $info,
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
     }
 }

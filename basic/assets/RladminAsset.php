@@ -18,7 +18,8 @@ class RladminAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css'
+        'css/site.css',
+        'css/font-awesome.css',
     ];
     
     public $depends = [

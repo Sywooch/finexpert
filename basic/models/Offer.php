@@ -101,13 +101,13 @@ class Offer extends \yii\db\ActiveRecord
 
     public function getStatusName()
     {
-        if ($this->status = self::STOPPED) {
+        if ($this->status == self::STOPPED) {
             return 'Stopped';
         }
-        if ($this->status = self::PENDING) {
+        if ($this->status == self::PENDING) {
             return 'Pending';
         }
-        if ($this->status = self::ACTIVE) {
+        if ($this->status == self::ACTIVE) {
             return 'Active';
         }
     }

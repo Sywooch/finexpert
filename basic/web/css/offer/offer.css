@@ -1,0 +1,9 @@
+.container .jumbotron-new-offer, .container-fluid .jumbotron-new-offer{
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.jumbotron-new-offer .btn{
+	font-size: 14px;
+}

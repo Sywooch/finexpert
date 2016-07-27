@@ -21,15 +21,7 @@ body {
     padding-top: 20px;
 }
 
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
 
 .not-set {
     color: #c55;
@@ -91,6 +83,9 @@ a.desc:after {
 }
 
 /* TOP, LEFT, RIGHT and BUTTON marging */
+.top-10{
+    margin-top: 10px;
+}
 .top-20{
     margin-top: 20px;;
 }

@@ -2,10 +2,12 @@
 use yii\helpers\Html;
 if (isset($offer)) {
 	$title_modal = $offer->name;
+	$offer_id = $offer->id;
 }else{
 	$title_modal = 'New Offer';
+	$offer_id = NULL;
 }
-echo Html::beginTag('div',['class' => 'modal fade', 'id' => $id, 'role' => 'dialog', 'aria-labelledby' => 'Offer']);
+echo Html::beginTag('div',['class' => 'modal fade', 'id' => $id, 'role' => 'dialog', 'aria-labelledby' => 'Offer', 'offer' => $offer_id]);
 	echo Html::beginTag('div',['class' => 'modal-dialog', 'role' => 'document']);
 		echo Html::beginTag('div',['class' => 'modal-content']);
 			echo Html::beginTag('div',['class' => 'modal-header']);
