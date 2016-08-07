@@ -15,7 +15,7 @@ echo Html::beginTag('div',['class' => 'jumbotron jumbotron-new-offer']);
 		echo Html::endTag('div');
 		echo Html::beginTag('div',['class' => 'row top-10']);
 			echo Html::beginTag('div',['class' => 'col-sm-12']);
-				if (file_exists('@web/images/offer/logo/'.$offer->id.'.png')) {
+				if (file_exists(Yii::$app->basePath.'/web/images/offer/logo/'.$offer->id.'.png')) {
 					echo Html::img('@web/images/offer/logo/'.$offer->id.'.png',['name' => 'preview-logo']);
 				}else{
 					echo Html::img('@web/images/noavatar.png',['name' => 'preview-logo']);

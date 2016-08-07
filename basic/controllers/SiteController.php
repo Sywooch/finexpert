@@ -6,8 +6,10 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Offer;
 
 class SiteController extends Controller
 {
@@ -117,12 +119,70 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Displays calculator page.
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionCalculator()
     {
-        return $this->render('about');
+        return $this->render('calculator');
+    }
+
+    /**
+    * calculate offers
+    * @return string
+    */
+    public function actionCalculate()
+    {
+        if (!\Yii::$app->user->isGuest) {
+            if(Yii::$app->request->isAjax){
+                $error = [];
+                $info = [];
+                
+                $post_data = Yii::$app->request->post();
+
+                if (!isset($post_data)) {
+                    $error[] = 'Данные для расчета не заданы';
+                    return $this->renderAjax('result',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['amount'])) {
+                    $error[] = 'Размер займа не задан';
+                    return $this->renderAjax('result',[
+                            'error' => $error,
+                        ]);
+                }
+
+                if (!isset($post_data['time'])) {
+                    $error[] = 'Срок займа не задан';
+                    return $this->renderAjax('result',[
+                            'error' => $error,
+                        ]);
+                }
+
+                $offers = Offer::find()->where(['and',['status' => Offer::ACTIVE],['<=','min_loan',(int)$post_data['amount']],['>=', 'max_loan', (int)$post_data['amount']],['<=','min_time',(int)$post_data['time']],['>=', 'max_time', (int)$post_data['time']]])->indexBy('id')->all();
+                
+                if ($offers != NULL) {
+                    $calculate_offers = [];
+                    foreach ($offers as $offer) {
+                        $calculate_offers[] = $offer->calculate((int)$post_data['amount'], (int)$post_data['time']);
+
+                    }
+                }
+                ArrayHelper::multisort($calculate_offers, ['commision'], [SORT_ASC]);
+                return $this->renderAjax('calculator/_offers',[
+                        'offers' => $offers,
+                        'data' => $calculate_offers,
+                        'amount' => $post_data['amount'],
+                        'time' => $post_data['time'],
+                    ]);
+            }   
+                
+        }
+        else{
+            return $this->redirect(['index']);
+        }
     }
 }

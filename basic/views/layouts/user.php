@@ -131,7 +131,7 @@ AppAsset::register($this);
                         <li><a href="">Займы наличными</a></li>
                       </ul>
                     </li>
-                    <li><a href="">Калькулятор</a></li>
+                    <li><?= Html::a('Калькулятор',['site/calculator']) ?></li>
                     
                     <li><a href="">Контакты</a></li>
                   </ul>

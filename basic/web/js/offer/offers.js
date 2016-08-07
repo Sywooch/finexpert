@@ -118,12 +118,22 @@ $(function() {
         
   });
 
-  home.on('change','input[name = "logo"]', function () {
+  home.on('hidden.bs.modal','div[id ^= "load-image"]', function () {
+    var block_reload = $(this).find('div.modal-body');
+    block_reload.empty();
+        
+  });
+
+  home.on('change','input[name = "imageFile"]', function () {
     var input = this;
+    var image_preview = $(this).parents('form[name = "load-logo"]').find('img[name = "preview-logo"]');
+    
     if (input.files && input.files[0]) {
             var reader = new FileReader();            
             reader.onload = function (e) {
-                home.find('img[name = "preview-logo"]').attr('src', e.target.result);
+
+                image_preview.attr('src', e.target.result);
+                
             }
             
             reader.readAsDataURL(input.files[0]);
@@ -134,6 +144,9 @@ $(function() {
       var block_reload = $(this).parents('div.modal-body').find('div[name = "block-modal-info"]');
       var files = event.currentTarget[2]['files'];
       var offer = $(this).find('input[name = "offer"]').val();
+      var image_offer = $(this).parents('tr').find('img[name = "offer-logo"]');
+      var image_preview = $(this).find('img[name = "preview-logo"]');
+      image_offer.attr('src', image_preview.attr('src'));
       handleFileUpload(files,offer, block_reload);
       event.preventDefault();
   });

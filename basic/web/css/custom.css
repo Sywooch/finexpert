@@ -1,0 +1,46 @@
+.margin-top-10{
+	margin-top: 10px;
+}
+
+.margin-top-30{
+	margin-top: 30px;
+}
+
+.margin-right-0{
+	margin-right: 0px;
+}
+
+.padding-left-0{
+	padding-left: 0px;
+}
+.padding-left-5{
+	padding-left: 5px;
+}
+.padding-left-7{
+	padding-left: 7px;
+}
+
+
+.page .btn-curious-blue-outline{
+	background-color: white;
+}
+.ui-slider-horizontal .ui-slider-handle{
+	top: -.6em;
+	margin-left: -.6em;
+}
+.ui-slider .ui-slider-handle{
+	width: 2em;
+	height: 3em;
+}
+.ui-slider-horizontal{
+	height: 2em;
+}
+.btn{
+	padding: 0px 29px;
+}
+
+@media (max-width: 768px) {
+	.margin-top-10-xs{
+		margin-top: 10px;
+	}
+}

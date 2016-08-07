@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+$this->registerJsFile('@web/js/core.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <!-- Swiper-->
       <div data-min-height="400px" class="swiper-container swiper-slider">
