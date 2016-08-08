@@ -21,8 +21,13 @@ $this->registerJsFile('@web/js/calculator/calculator.js', ['depends' => [\yii\we
               <div class="col-sm-12">
                 <?= $this->render('calculator/_sliders'); ?>
               </div>
-              <div class="col-sm-12" name = "list-offers">
-                <?= $this->render('calculator/_offers'); ?>
+              <div class="col-sm-12 margin-top-20" name = "list-offers">
+                <?= $this->render('calculator/_offers',[
+                    'offers' => $offers,
+                    'data' => $data,
+                    'amount' => $amount,
+                    'time' => $time,
+                ]); ?>
               </div>
             </div>
           </div>

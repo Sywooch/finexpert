@@ -125,7 +125,27 @@ class SiteController extends Controller
      */
     public function actionCalculator()
     {
-        return $this->render('calculator');
+
+        // default value
+        $amount = 5000;
+        $time = 10;
+        //dedault value
+
+        $offers = Offer::find()->where(['and',['status' => Offer::ACTIVE],['<=','min_loan',$amount],['>=', 'max_loan', $amount],['<=','min_time',$time],['>=', 'max_time', $time]])->indexBy('id')->all();
+        
+        if ($offers != NULL) {
+            $calculate_offers = [];
+            foreach ($offers as $offer) {
+                $calculate_offers[] = $offer->calculate($amount, $time);
+            }
+        }
+        ArrayHelper::multisort($calculate_offers, ['commision'], [SORT_ASC]);
+        return $this->render('calculator',[
+                'offers' => $offers,
+                'data' => $calculate_offers,
+                'amount' => $amount,
+                'time' => $time,
+            ]);
     }
 
     /**

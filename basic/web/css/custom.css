@@ -1,7 +1,9 @@
 .margin-top-10{
 	margin-top: 10px;
 }
-
+.margin-top-20{
+	margin-top: 20px;
+}
 .margin-top-30{
 	margin-top: 30px;
 }
@@ -25,15 +27,15 @@
 	background-color: white;
 }
 .ui-slider-horizontal .ui-slider-handle{
-	top: -.6em;
+	top: -.35em;
 	margin-left: -.6em;
 }
 .ui-slider .ui-slider-handle{
-	width: 2em;
-	height: 3em;
+	width: 1em;
+	height: 1em;
 }
 .ui-slider-horizontal{
-	height: 2em;
+	height: .5em;
 }
 .btn{
 	padding: 0px 29px;

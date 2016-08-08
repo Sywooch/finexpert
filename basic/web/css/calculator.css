@@ -2,3 +2,9 @@ h5[name = "lable-slider"]{
 	padding-bottom: 10px;
 
 }
+tr[name = "info"]{
+	display: none;
+}
+span[name = "offer-info"]:hover{
+	cursor: pointer;
+}

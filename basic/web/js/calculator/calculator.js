@@ -54,4 +54,9 @@ $(function() {
           	}
         );
 	}
+
+	home.on('click', 'span[name = "offer-info"]', function () {
+		var home_tr = $(this).parents('tr[name = "offer"]');
+		var info_tr = home_tr.next('tr[name = "info"]').toggle();
+	});
 });
