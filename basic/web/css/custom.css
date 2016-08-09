@@ -33,6 +33,7 @@
 .ui-slider .ui-slider-handle{
 	width: 1em;
 	height: 1em;
+	cursor: pointer;
 }
 .ui-slider-horizontal{
 	height: .5em;
@@ -45,4 +46,28 @@
 	.margin-top-10-xs{
 		margin-top: 10px;
 	}
+}
+
+@media (max-width: 767px){
+	.table-mobile .table-curious-blue tbody tr td:first-child{
+		color: #000000;
+	}
+	.table-mobile .table-curious-blue tbody tr[name = "info"]{
+		display: none;
+	}
+	.table-mobile .table-curious-blue tbody tr td span[name = "offer-info"]:hover{
+		cursor: pointer;
+	}
+}
+
+.baner-slider{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+h3 + *, .h3 + *{
+	margin-top: 15px;
+}
+.table > thead > tr > th{
+	padding-top: 10px;
+	padding-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 echo Html::beginTag('div',['name' => 'time-slider']);
-	echo Html::beginTag('div',['class' => 'row margin-top-30']);
+	echo Html::beginTag('div',['class' => 'row margin-top-10']);
 		echo Html::beginTag('div',['class' => 'col-sm-12 padding-left-7']);
 			echo Html::tag('h5','Срок:',['name' => 'lable-slider']);
 		echo Html::endTag('div');

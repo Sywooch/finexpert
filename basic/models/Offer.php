@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\Html;
 /**
  * This is the model class for table "offer".
  *
@@ -428,5 +429,40 @@ class Offer extends \yii\db\ActiveRecord
             'amount' => $amount,
             'commision' => $commision,
         ];
+    }
+    /**
+    * @return string
+    */
+    public function listPayments()
+    {
+        $out = '';
+        if (stripos($this->payment, 'Банковский счет') !== false) {
+            $out .= Html::img('@web/images/payment/bank.png',['width' => '50px','alt' => 'Банковский счет']);
+        }
+        if (stripos($this->payment, 'visa') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/visa.jpg',['width' => '50px','alt' => 'VISA']);
+        }
+        if (stripos($this->payment, 'master') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/master.jpg',['width' => '50px','alt' => 'MasterCard']);
+        }
+        if (stripos($this->payment, 'QIWI') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/qiwi.png',['width' => '100px','alt' => 'QIWI']);
+        }
+        if (stripos($this->payment, 'CONTACT') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/contact.png',['width' => '100px','alt' => 'CONTACT']);
+        }
+        if (stripos($this->payment, 'Кукуруза') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/corn.png',['width' => '80px','alt' => 'Евросеть']);
+        }
+        if (stripos($this->payment, 'Яндекс') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/yandex.png',['width' => '80px','alt' => 'Яндекс деньги']);
+        }
+        if (stripos($this->payment, 'корона') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/gold.png',['width' => '70px','alt' => 'Золотая корона']);
+        }
+        if (stripos($this->payment, 'Лидер') !== false) {
+            $out .= '&nbsp;&nbsp;&nbsp;'.Html::img('@web/images/payment/lider.png',['width' => '120px','alt' => 'Лидер']);
+        }
+        return $out;
     }
 }
