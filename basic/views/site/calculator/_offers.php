@@ -66,5 +66,8 @@ if (isset($data)) {
 	
 }
 
+/*$this->registerJs('var test = JSON.stringify();
+console.log(test);
+	');*/
 
 ?>
