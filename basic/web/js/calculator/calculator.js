@@ -37,6 +37,8 @@ $(function() {
 	function calculate() {
 		var amount = $('#amount-slider').slider( "option", "value" );
 		var time = $('#time-slider').slider( "option", "value" );
+		var payment = home.find('select[name = "payment"]');
+		var age = home.find('input[name = "age"]');
 		var block_reload = home.find('div[name = "list-offers"]');
 	    block_reload.empty();
 	    block_reload.append('<div class="text-center"><i class = "fa fa-spinner fa-pulse fa-4x"></i></div>');
@@ -45,6 +47,8 @@ $(function() {
 	        	{
 	        		amount: amount,
 	        		time: time,
+	        		payment: payment.val(),
+	        		age: age.val(),
 	        	}
 	    ).done(function( data ) {
 	        	block_reload.html(data);
@@ -58,5 +62,9 @@ $(function() {
 	home.on('click', 'span[name = "offer-info"]', function () {
 		var home_tr = $(this).parents('tr[name = "offer"]');
 		var info_tr = home_tr.next('tr[name = "info"]').toggle();
+	});
+
+	home.on('change', 'select[name = "payment"],input[name = "age"]', function () {
+		calculate();
 	});
 });

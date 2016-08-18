@@ -160,6 +160,7 @@ class SiteController extends Controller
                 $info = [];
                 
                 $post_data = Yii::$app->request->post();
+              
 
                 if (!isset($post_data)) {
                     $error[] = 'Данные для расчета не заданы';
@@ -182,7 +183,15 @@ class SiteController extends Controller
                         ]);
                 }
 
-                $offers = Offer::find()->where(['and',['status' => Offer::ACTIVE],['<=','min_loan',(int)$post_data['amount']],['>=', 'max_loan', (int)$post_data['amount']],['<=','min_time',(int)$post_data['time']],['>=', 'max_time', (int)$post_data['time']]])->indexBy('id')->all();
+                $query = Offer::find()->where(['and',['status' => Offer::ACTIVE],['<=','min_loan',(int)$post_data['amount']],['>=', 'max_loan', (int)$post_data['amount']],['<=','min_time',(int)$post_data['time']],['>=', 'max_time', (int)$post_data['time']]])->indexBy('id');
+                if ($post_data['payment'] != NULL) {
+                    $query->andWhere(['like','payment', trim($post_data['payment'])]);
+                }
+                if ($post_data['age'] != NULL) {
+                    $query->andWhere(['and',['<=','min_age', (int)$post_data['age']],['>=', 'max_age', (int)$post_data['age']]]);
+                }
+
+                $offers = $query->all();
                 
                 if ($offers != NULL) {
                     $calculate_offers = [];

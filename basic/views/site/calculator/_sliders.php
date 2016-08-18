@@ -7,5 +7,6 @@ echo Html::beginTag('div',['class' => 'banner baner-slider bg-curious-blue']);
 	echo Html::endTag('h3');
 	echo $this->render('_amount_slider');
 	echo $this->render('_time_slider');
+	echo $this->render('_additional_filter');
 echo Html::endTag('div');
 ?>
