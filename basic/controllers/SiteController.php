@@ -11,6 +11,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Offer;
 
+use DavidePastore\Ipinfo\Ipinfo;
+
 class SiteController extends Controller
 {
         public $layout = 'user';
@@ -131,6 +133,10 @@ class SiteController extends Controller
         $time = 10;
         //dedault value
 
+        //ip geo
+        $this->IpData();
+        //ip geo
+
         $offers = Offer::find()->where(['and',['status' => Offer::ACTIVE],['<=','min_loan',$amount],['>=', 'max_loan', $amount],['<=','min_time',$time],['>=', 'max_time', $time]])->indexBy('id')->all();
         
         if ($offers != NULL) {
@@ -213,5 +219,37 @@ class SiteController extends Controller
         else{
             return $this->redirect(['index']);
         }
+    }
+
+    public function getIp()
+    {
+        if (isset($_SERVER['REMOTE_ADDR'])) {
+            return $_SERVER['REMOTE_ADDR'];
+        }
+    }
+
+    public function IpData()
+    {
+        //$ip = getIp();
+        $ip = '82.208.101.208';
+
+        $ipInfo = new Ipinfo();
+        $host = $ipInfo->getIpGeoDetails($ip);
+
+        var_dump($host);
+        die();
+        /*$ip_from_base = ipFromBase($ip);
+        if ($ip_from_base == null) {
+            $ipInfo = new Ipinfo();
+            $host = $ipInfo->getIpGeoDetails()($ip);
+            $properties = $host->getProperties();
+            saveIpData($properties);
+            return $properties;
+        }else{
+            if (isset($ip_from_base[0])) {
+                return $ip_from_base[0];
+            }
+            
+        }*/
     }
 }
