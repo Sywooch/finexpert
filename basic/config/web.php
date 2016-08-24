@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+    'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -27,7 +28,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -44,7 +45,82 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                [
+                    'pattern' => 'sitemap-home', 
+                    'route' => 'sitemap-home/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap', 
+                    'route' => 'sitemap/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap1', 
+                    'route' => 'sitemap1/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap2', 
+                    'route' => 'sitemap2/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap3', 
+                    'route' => 'sitemap3/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap4', 
+                    'route' => 'sitemap4/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap5', 
+                    'route' => 'sitemap5/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap6', 
+                    'route' => 'sitemap6/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap7', 
+                    'route' => 'sitemap7/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap8', 
+                    'route' => 'sitemap8/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap9', 
+                    'route' => 'sitemap9/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap10', 
+                    'route' => 'sitemap10/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap11', 
+                    'route' => 'sitemap11/index', 
+                    'suffix' => '.xml'
+                ],
+                [
+                    'pattern' => 'sitemap12', 
+                    'route' => 'sitemap12/index', 
+                    'suffix' => '.xml'
+                ],
+                'city/<id:\d+>/<payment:\w+>' => 'site/city',
+                'city/<id:\d+>' => 'site/city',
+                'loans/<payment:\w+>' => 'site/loans',
                 '<action>'=>'site/<action>',
+                //'city/<id:\d+><payment:[a-z]>' => 'city',
+                
 
 
             ],

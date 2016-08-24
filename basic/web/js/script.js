@@ -1161,7 +1161,7 @@ $document.ready(function () {
    * RD Search
    * @description Enables search
    */
-  if (plugins.search.length || plugins.searchResults) {
+  /*if (plugins.search.length || plugins.searchResults) {
     var handler = "bat/rd-search.php";
     var defaultTemplate = '<h5 class="search_title"><a target="_top" href="#{href}" class="search_link">#{title}</a></h5>' +
         '<p>...#{token}...</p>' +
@@ -1246,7 +1246,7 @@ $document.ready(function () {
         })
       }
     }
-  }
+  }*/
 
   /**
    * Slick carousel

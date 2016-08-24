@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "760f67dab1e267710691e7812f4bb6a1",
-    "content-hash": "6e7b5d66954be282287ffb913792971c",
+    "hash": "5b30a9fda0c3f9f89a3a0c2212f73189",
+    "content-hash": "9ae0f79fe07e6369c273b5e52e216c6d",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -335,6 +335,47 @@
                 "html"
             ],
             "time": "2016-07-16 12:58:58"
+        },
+        {
+            "name": "mrssoft/yii2-sitemap",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrs2000/yii2-sitemap.git",
+                "reference": "44ddcfd8a2e8db93829e2afc5bbd5086ba49585b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrs2000/yii2-sitemap/zipball/44ddcfd8a2e8db93829e2afc5bbd5086ba49585b",
+                "reference": "44ddcfd8a2e8db93829e2afc5bbd5086ba49585b",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "mrssoft\\sitemap\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Melnikov Ruslan",
+                    "email": "mrs2000@inbox.ru"
+                }
+            ],
+            "description": "Yii2 sitemap extension",
+            "keywords": [
+                "Sitemap",
+                "extension",
+                "yii2"
+            ],
+            "time": "2016-04-26 02:59:18"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -940,7 +981,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mrssoft/yii2-sitemap": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

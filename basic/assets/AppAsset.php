@@ -20,11 +20,16 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/style.css',
         'css/custom.css',
-        '//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,300italic'
+        '//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,300italic',
+        'css/jquery-ui/jquery-ui.css',
     ];
     public $js = [
         //'js/core.min.js',
-        'js/script.js'
+        'js/script.js',
+        'js/search.js',
+        'js/subscribe.js',
+        'js/jquery-ui/jquery-ui.js',
+        'js/social.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
