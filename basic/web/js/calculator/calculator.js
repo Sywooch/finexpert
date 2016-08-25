@@ -43,7 +43,7 @@ $(function() {
 	    block_reload.empty();
 	    block_reload.append('<div class="text-center"><i class = "fa fa-spinner fa-pulse fa-4x"></i></div>');
 	    $.post(
-	        	'/site/calculate',
+	        	'http://ezaimexpert.ru/site/calculate',
 	        	{
 	        		amount: amount,
 	        		time: time,
