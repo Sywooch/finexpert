@@ -41,13 +41,12 @@ class RladminController extends Controller
                         'allow' => true,
                         'roles' => ['?'],
                         
-                        
                     ],
                     [
                         'actions' => ['index','users', 'roles', 'create-role', 'assign-role', 'offers', 'load-form-new-offer', 'save-new-offer', 'load-form-edit-offer', 'save-offer', 'load-form-edit-logo', 'save-logo', 'reload-list-offer'],
                         'allow' => true,
                         'roles' => ['admin'],
-                        'ips' => ['127.0.0.1','82.208.100.67'],
+                        'ips' => ['127.0.0.1','82.208.100.67', '176.59.119.195'],
                     ],
 
                 ],
