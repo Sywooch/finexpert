@@ -54,7 +54,7 @@ use yii\captcha\Captcha;
                 
             </div>
             <div class="offset-top-34">
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
             </div>
             
         </div>

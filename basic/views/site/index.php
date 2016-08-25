@@ -154,14 +154,11 @@ $this->registerJsFile('@web/js/core.min.js', ['depends' => [\yii\web\JqueryAsset
               <div class="cell-xs-12 cell-sm-5 cell-lg-3">
                 <div class="product">
                   <div class="icon-decoration-border">
-                    <div class="icon-decoration-border-inner"><span class="icon icon-md-variant-2 icon-primary fl-sympletts-coin18"></span></div>
+                    <div class="icon-decoration-border-inner"><span class="icon icon-md-variant-2 icon-primary fa-key"></span></div>
                   </div>
-                  <h4><a href="#">Financial Planning</a></h4>
+                  <h4>Безопасность и конфиденциальность</h4>
                   <p>
-                    We'll help you make
-                    sensible decisions about
-                     money that can help you
-                    achieve your goals in life.
+                    Мы гарантируем сохранность персональных данных. Хранятся сервисом в зашифрованном виде.
                     
                   </p>
                 </div>
@@ -169,13 +166,11 @@ $this->registerJsFile('@web/js/core.min.js', ['depends' => [\yii\web\JqueryAsset
               <div class="cell-xs-12 cell-sm-5 cell-lg-3 offset-top-56 offset-sm-top-0">
                 <div class="product">
                   <div class="icon-decoration-border">
-                    <div class="icon-decoration-border-inner"><span class="icon icon-md-variant-2 icon-primary fl-sympletts-coffee2"></span></div>
+                    <div class="icon-decoration-border-inner"><span class="icon icon-md-variant-2 icon-primary fa-globe"></span></div>
                   </div>
-                  <h4><a href="#">Retirement Planning</a></h4>
+                  <h4>Займы доступны по всей России</h4>
                   <p>
-                    Use our strategies and
-                    retirement advice, including retirement  calculators
-                    to help you retire faster.
+                    Вы можете получить микрозайм в любом месте РФ. Все, что вам нужно – доступ к сети интернет.
                     
                   </p>
                 </div>
@@ -184,16 +179,12 @@ $this->registerJsFile('@web/js/core.min.js', ['depends' => [\yii\web\JqueryAsset
                 <div class="product product-inset-1">
                   <div class="icon-decoration-border">
                     <div class="icon-decoration-border-inner">
-                      <div class="icon icon-image"><img src="images/icon-chart-41x36.png" alt="" width="41" height="36"/>
-                      </div>
+                      <span class="icon icon-md-variant-2 icon-primary fa-money"></span>
                     </div>
                   </div>
-                  <h4><a href="#">Risk Management</a></h4>
+                  <h4>Перечисление на любой счёт</h4>
                   <p>
-                    Risk management is intended
-                     to manage financial and other
-                    losses associated with risks
-                    to your assets or business.
+                    Получение микрозайма удобным для вас способом – Киви, банковская карта Visa или MasterCard, денежным переводом Contact или на банковский счет.
                     
                   </p>
                 </div>
@@ -202,16 +193,12 @@ $this->registerJsFile('@web/js/core.min.js', ['depends' => [\yii\web\JqueryAsset
                 <div class="product product-inset-1">
                   <div class="icon-decoration-border">
                     <div class="icon-decoration-border-inner">
-                      <div class="icon icon-image"><img src="images/icon-case-42x39.png" alt="" width="42" height="39"/>
-                      </div>
+                      <span class="icon icon-md-variant-2 icon-primary fa-credit-card-alt"></span>
                     </div>
                   </div>
-                  <h4><a href="#">Taxation</a></h4>
+                  <h4>Много способов для погашения займа</h4>
                   <p>
-                    Tax planning considers the
-                    tax implications of business
-                    decisions, usually with the goal
-                    of minimizing tax liability.
+                    Оплата выданного займа с помощью банковской карты, переводом, электронными деньгами или Киви.
                   </p>
                 </div>
               </div>
