@@ -16,7 +16,7 @@ if (isset($data)) {
 						echo 'Комиссия';
 					echo Html::endTag('th');
 					echo Html::beginTag('th',['class' => 'text-center']);
-						echo 'К выплате '.strftime("%d %B %G",strtotime("+ $time day",time()));
+						echo 'К выплате '.date("d/m/Y",strtotime("+ $time day",time()));
 					echo Html::endTag('th');
 					echo Html::beginTag('th');
 						

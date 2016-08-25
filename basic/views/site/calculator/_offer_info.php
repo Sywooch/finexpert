@@ -39,16 +39,18 @@ echo Html::beginTag('div',['class' => 'row']);
 		echo Html::endTag('ul');
 	echo Html::endTag('div');
 echo Html::endTag('div');
-
-echo Html::beginTag('div',['class' => 'row']);
-	echo Html::beginTag('div',['class' => 'col-sm-12']);
-		echo Html::beginTag('ul',['class' => 'list-group']);
-			echo Html::beginTag('li',['class' => 'list-group-item']);
-				echo $offer->description;
-			echo Html::endTag('li');
-		echo Html::endTag('ul');
+if ($offer->description != NULL) {
+	echo Html::beginTag('div',['class' => 'row']);
+		echo Html::beginTag('div',['class' => 'col-sm-12']);
+			echo Html::beginTag('ul',['class' => 'list-group']);
+				echo Html::beginTag('li',['class' => 'list-group-item']);
+					echo $offer->description;
+				echo Html::endTag('li');
+			echo Html::endTag('ul');
+		echo Html::endTag('div');
 	echo Html::endTag('div');
-echo Html::endTag('div');
+}
+
 
 
 
