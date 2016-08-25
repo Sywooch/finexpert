@@ -40,7 +40,7 @@ class RladminController extends Controller
                         'actions' => ['login'],
                         'allow' => true,
                         'roles' => ['?'],
-                        'ips' => ['127.0.0.1','82.208.100.67'],
+                        
                         
                     ],
                     [
