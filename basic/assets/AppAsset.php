@@ -29,7 +29,10 @@ class AppAsset extends AssetBundle
         'js/search.js',
         'js/subscribe.js',
         'js/jquery-ui/jquery-ui.js',
-        'js/social.js'
+        'js/es5-shims.min.js',
+        'js/share.js',
+        //'js/social.js',
+        
     ];
     public $depends = [
         'yii\web\YiiAsset',

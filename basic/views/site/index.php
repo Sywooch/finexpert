@@ -65,7 +65,7 @@ $this->registerJsFile('@web/js/core.min.js', ['depends' => [\yii\web\JqueryAsset
                         <p class="rd-navbar-fixed--hidden small">Добро пожаловать в eZaimExpert, ваш эксперт в микрозаймах!</p>
                       </div>
                       <div class="block-right">
-                        <div class="pluso" data-background="transparent" data-options="medium,round,line,horizontal,counter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter"></div>
+                        <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>
                       </div>
                     </div>
                   </div>

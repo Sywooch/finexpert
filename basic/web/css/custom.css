@@ -114,3 +114,10 @@ h3 + *, .h3 + *{
 div[class ^= "pluso"] .pluso-wrap a.pluso-more{
 	display: none;
 }
+
+.ya-share2__item_service_facebook .ya-share2__badge{
+	background-color: #666;
+}
+.ya-share2__badge{
+	border-radius: 15px;
+}
