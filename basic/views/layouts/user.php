@@ -45,22 +45,22 @@ $this->registerLinkTag([
       <div class="container-fluid">
         <div class="row partners">
           <div class="col-xs-4 col-sm-2">
-            <?= Html::img('@web/images/offer/2.png',['class' => 'img-responsive'])?>
+            <?= Html::img('@web/images/2.png',['class' => 'img-responsive'])?>
           </div>
           <div class="col-xs-4 col-sm-2">
-            <?= Html::img('@web/images/offer/3.png',['class' => 'img-responsive'])?>
+            <?= Html::img('@web/images/3.png',['class' => 'img-responsive'])?>
           </div>
           <div class="col-xs-4 col-sm-2">
-            <?= Html::img('@web/images/offer/4.png',['class' => 'img-responsive'])?>
+            <?= Html::img('@web/images/4.png',['class' => 'img-responsive'])?>
           </div>
           <div class="col-xs-4 col-sm-2">
-            <?= Html::img('@web/images/offer/5.png',['class' => 'img-responsive'])?>
+            <?= Html::img('@web/images/5.png',['class' => 'img-responsive'])?>
           </div>
           <div class="col-xs-4 col-sm-2">
-            <?= Html::img('@web/images/offer/6.png',['class' => 'img-responsive'])?>
+            <?= Html::img('@web/images/6.png',['class' => 'img-responsive'])?>
           </div>
           <div class="col-xs-4 col-sm-2">
-            <?= Html::img('@web/images/offer/7.png',['class' => 'img-responsive'])?>
+            <?= Html::img('@web/images/7.png',['class' => 'img-responsive'])?>
           </div>
         </div>
       </div>
