@@ -368,6 +368,11 @@ class SiteController extends Controller
         }
     }
 
+    public function actionGo($url)
+    {
+        return $this->redirect($url);
+    }
+
     public function getIp()
     {
         if (isset($_SERVER['REMOTE_ADDR'])) {
