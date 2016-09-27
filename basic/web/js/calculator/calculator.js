@@ -16,7 +16,7 @@ $(function() {
 		change: function(event, ui) {
 			calculate();
 		}
-	});
+	}).draggable();
 	$('#time-slider').slider({
 		min: 1,
 		max: 30,
@@ -27,7 +27,7 @@ $(function() {
 		change: function(event, ui) {
 			calculate();
 		}
-	});
+	}).draggable();
 
 	function displayCurrentAmmount(value) {
 		var block_amount = home.find('div[name = "amount-slider"]').find('span[name = "current-amount"]');

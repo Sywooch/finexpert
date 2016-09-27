@@ -449,6 +449,16 @@ section.calculator div.block-calculator div.block-slider h5[name="lable-slider"]
 section.calculator div.block-calculator div.block-slider div[name="additional-filter"] span {
   color: #fff;
 }
+section.calculator div.block-calculator div.block-slider span.ui-slider-handle {
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  section.calculator div.block-calculator div.block-slider span.ui-slider-handle {
+    top: -0.7em;
+    width: 2em;
+    height: 2em;
+  }
+}
 section.calculator div.block-list-offer {
   margin-top: 15px;
 }
@@ -456,11 +466,6 @@ section.calculator div.block-list-offer i[name="offer-info"] {
   cursor: pointer;
   font-size: 30px;
   color: #323946;
-}
-@media (max-width: 767px) {
-  section.calculator div.block-list-offer i[name="offer-info"] {
-    font-size: 20px;
-  }
 }
 @media (max-width: 767px) {
   section.calculator div.block-list-offer img[name="offer-logo"] {

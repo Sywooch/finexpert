@@ -491,7 +491,14 @@ section.calculator{
 					color: @color-text-white;	
 				}
 			}
-			
+			span.ui-slider-handle{
+				cursor: pointer;
+				@media (max-width: 767px){
+					top: -.7em;
+					width: 2em;
+					height: 2em;
+				}
+			}	
 		}
 	}
 	div.block-list-offer{
@@ -500,9 +507,7 @@ section.calculator{
 			cursor: pointer;
 			font-size: 30px;
 			color: @color-text-dark-blue;		
-			@media (max-width: 767px){
-				font-size: 20px;
-			}
+			
 		}
 		img[name = "offer-logo"]{
 			@media (max-width: 767px){

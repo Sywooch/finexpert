@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         'js/es5-shims.min.js',
         'js/share.js',
         'js/menu.js',
+        'js/jquery.ui.touch-punch.min.js'
         
     ];
     public $depends = [
