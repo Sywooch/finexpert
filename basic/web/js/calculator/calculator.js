@@ -1,5 +1,10 @@
 $(function() {
-	var home = $('main.page-content');
+	var body = $('body');
+	var home = $('section.calculator');
+
+	//$.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+
+		 
 	$('#amount-slider').slider({
 		min: 100,
 		max: 30000,
@@ -42,24 +47,29 @@ $(function() {
 		var block_reload = home.find('div[name = "list-offers"]');
 	    block_reload.empty();
 	    block_reload.append('<div class="text-center"><i class = "fa fa-spinner fa-pulse fa-4x"></i></div>');
+	    var param = ['amount','time','payment','age'];
+	    var value = [amount,time,payment.val(),age.val()];
+	    var form = createForm(param,value);
 	    $.post(
-	        	'http://ezaimexpert.ru/site/calculate',
+	        	'/calculate',
 	        	{
 	        		amount: amount,
 	        		time: time,
 	        		payment: payment.val(),
-	        		age: age.val(),
+	        		age: age.val()
 	        	}
 	    ).done(function( data ) {
 	        	block_reload.html(data);
 	        }
 	    ).fail( function(xhr, textStatus, errorThrown) {
-        		alert(xhr.responseText);
+	    		alert(xhr.responseText);
+	       		
           	}
         );
+        
 	}
 
-	home.on('click', 'span[name = "offer-info"]', function () {
+	home.on('click', 'i[name = "offer-info"]', function () {
 		var home_tr = $(this).parents('tr[name = "offer"]');
 		var info_tr = home_tr.next('tr[name = "info"]').toggle();
 	});
@@ -67,4 +77,14 @@ $(function() {
 	home.on('change', 'select[name = "payment"],input[name = "age"]', function () {
 		calculate();
 	});
+
+	function createForm(param,value) {
+		var form = $('form[name = "default-form"]');
+		form.find('[type-file = "ex"]').remove();
+		for (var i = 0; i < param.length; i++) {
+			form.append('<input type = "hidden" name "'+param[i]+'" value = "'+value[i]+'"  type-file = "ex">');
+		}
+		return form;
+	}
+	
 });

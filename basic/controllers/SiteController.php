@@ -15,11 +15,12 @@ use app\models\Offer;
 use app\models\RuCity2;
 use app\models\Subscibe;
 
-use DavidePastore\Ipinfo\Ipinfo;
+//use DavidePastore\Ipinfo\Ipinfo;
 
 class SiteController extends Controller
 {
-        public $layout = 'user';
+    public $layout = 'user';
+    
     /**
      * @inheritdoc
      */
@@ -45,6 +46,8 @@ class SiteController extends Controller
             ],
         ];
     }
+
+    
 
     /**
      * @inheritdoc
@@ -225,14 +228,13 @@ class SiteController extends Controller
     */
     public function actionCalculate()
     {
-        if (!\Yii::$app->user->isGuest) {
+        
             if(Yii::$app->request->isAjax){
                 $error = [];
                 $info = [];
                 
                 $post_data = Yii::$app->request->post();
-              
-
+                
                 if (!isset($post_data)) {
                     $error[] = 'Данные для расчета не заданы';
                     return $this->renderAjax('result',[
@@ -280,10 +282,7 @@ class SiteController extends Controller
                     ]);
             }   
                 
-        }
-        else{
-            return $this->redirect(['index']);
-        }
+        
     }
     
     /**
@@ -292,7 +291,6 @@ class SiteController extends Controller
     */
     public function actionSubscribe()
     {
-        if (!\Yii::$app->user->isGuest) {
             if(Yii::$app->request->isAjax){
                 $error = [];
                 $info = [];
@@ -342,12 +340,10 @@ class SiteController extends Controller
                 
             }   
                 
-        }
-        else{
-            return $this->redirect(['index']);
-        }
+        
+        
     }
-
+    
     public function actionAutocompleteCity()
     {
         if(Yii::$app->request->isAjax){
@@ -403,13 +399,13 @@ class SiteController extends Controller
             
         }*/
     }
+    
     /**
-    *
-    * @param model $city
-    * @param string $payment
-    * @return string
-    */
-
+     * [getTitle description]
+     * @param  [type] $city    [description]
+     * @param  [type] $payment [description]
+     * @return [type]          [description]
+     */
     public function getTitle($city = null, $payment = null)
     {
         if ($city != NULL && $payment != NULL) {

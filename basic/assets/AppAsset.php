@@ -18,20 +18,18 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/style.css',
+        'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i',
+        'css/font-awesome.css',
         'css/custom.css',
-        '//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,300italic',
-        'css/jquery-ui/jquery-ui.css',
+        
     ];
     public $js = [
-        //'js/core.min.js',
-        'js/script.js',
+        'js/bootstrap.min.js',
         'js/search.js',
         'js/subscribe.js',
-        'js/jquery-ui/jquery-ui.js',
         'js/es5-shims.min.js',
         'js/share.js',
-        //'js/social.js',
+        'js/menu.js',
         
     ];
     public $depends = [

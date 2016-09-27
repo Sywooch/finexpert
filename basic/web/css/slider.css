@@ -1,0 +1,38 @@
+section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption {
+  top: 20%;
+  left: 10%;
+  right: 50%;
+}
+@media (max-width: 767px) {
+  section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption {
+    top: 15%;
+  }
+}
+section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.title {
+  position: relative;
+  font-size: 30px;
+  font-weight: bold;
+}
+@media (max-width: 767px) {
+  section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.title {
+    font-size: 20px;
+  }
+}
+section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.second-slider {
+  color: #fff;
+}
+section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.first-slider {
+  color: #333;
+}
+section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.description {
+  margin-top: 10px;
+  font-size: 22px;
+}
+@media (max-width: 767px) {
+  section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.description {
+    font-size: 14px;
+  }
+}
+section[name="slider"] div.carousel a.carousel-control {
+  width: 5%;
+}

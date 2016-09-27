@@ -1,0 +1,45 @@
+@color-text-white: #fff;
+@color-text-dark2: #333;
+
+section[name = "slider"]{
+	div.carousel{
+		div.carousel-inner{
+			div.item{
+				div.carousel-caption{
+					top: 20%;
+					left: 10%;
+					right: 50%;
+					@media (max-width: 767px) {
+						 top:15%;
+					}	
+					div.title{
+						position: relative;
+						font-size: 30px;
+						@media (max-width: 767px) {
+						  	font-size: 20px;
+						}	
+						font-weight: bold;
+					}
+					div.second-slider{
+						color: @color-text-white;
+
+					}
+					div.first-slider{
+						color: @color-text-dark2;
+					}
+					div.description{
+						margin-top: 10px;
+						font-size: 22px;
+						@media (max-width: 767px) {
+						  	font-size: 14px;
+						}	
+					}
+				}
+			}
+
+		}
+		a.carousel-control{
+				width: 5%;
+		}
+	}
+}

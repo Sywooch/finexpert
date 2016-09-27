@@ -32,7 +32,7 @@ use yii\captcha\Captcha;
                 ]); ?>
         <div class="range">
 
-            <div class="cell-xs-12 cell-md-4-9">
+            <div class="cell-xs-12">
 
                 
 
@@ -43,17 +43,17 @@ use yii\captcha\Captcha;
                     <?= $form->field($contact, 'subject')->label('Тема') ?>
 
                     <?= $form->field($contact, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ])->label('Код') ?>
+                        'template' => '<div class="row"><div class="col-xs-6">{image}</div><div class="col-xs-6">{input}</div></div>',
+                    ])->label(false) ?>
 
 
 
             </div>
-            <div class="cell-xs-12 cell-md-5-9 offset">
+            <div class="cell-xs-12">
                 <?= $form->field($contact, 'body')->textArea(['rows' => 6])->label('Сообщение') ?>
                 
             </div>
-            <div class="offset-top-34">
+            <div class="text-right">
                 <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
             </div>
             

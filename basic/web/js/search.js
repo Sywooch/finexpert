@@ -1,6 +1,6 @@
 $(function() {
-	$('body').on('focus', 'input#rd-search-form-input',function( event ) {
-        var form = $(this).parents('form[data-search-live = "rd-search-results-live"]');
+	$('body').on('focus', 'div.block-search input[name = "serach"]',function( event ) {
+        var form = $(this).parents('form[name = "serach"]');
         $(this).autocomplete({
             
             source: function( request, response ) {

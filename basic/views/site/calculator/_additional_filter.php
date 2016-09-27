@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Html;
 echo Html::beginTag('div',['name' => 'additional-filter']);
-	echo Html::beginTag('div',['class' => 'row margin-top-10']);
-		echo Html::beginTag('div',['class' => 'col-sm-3']);
+	echo Html::beginTag('div',['class' => 'row']);
+		echo Html::beginTag('div',['class' => 'col-sm-3 dd-paiment']);
 			echo Html::dropDownList('payment', paymentDD($payment), [
 					'visa' => 'VISA',
 					'master' => 'MasterCard',
@@ -16,12 +16,12 @@ echo Html::beginTag('div',['name' => 'additional-filter']);
 					'корона' => 'Золотая Корона',
 					'лидер' => 'Лидер',
 					'наличные' => 'Наличные в офисе'
- 				],['prompt' => 'Способ получения']);
+ 				],['prompt' => 'Способ получения', 'class' => 'form-control']);
 		echo Html::endTag('div');
-		echo Html::beginTag('div',['class' => 'col-sm-3 margin-top-10-xs']);
+		echo Html::beginTag('div',['class' => 'col-sm-3 input-age']);
 			echo Html::input('number', 'age', '', ['class' => 'form-control', 'placeholder' => 'Возраст', 'min' => 18]);
 		echo Html::endTag('div');
-		echo Html::beginTag('div',['class' => 'col-sm-6 margin-top-10-xs']);
+		echo Html::beginTag('div',['class' => 'col-sm-6']);
 			echo Html::tag('span','и мы подберем для вас лучшие предложения!',['class' => 'font-size-20']);
 		echo Html::endTag('div');
 	echo Html::endTag('div');

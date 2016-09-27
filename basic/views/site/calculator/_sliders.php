@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-echo Html::beginTag('div',['class' => 'banner baner-slider bg-curious-blue']);
+echo Html::beginTag('div',['class' => 'block-slider']);
 	echo Html::beginTag('h1');
 		if ($refer == 'city') {
 			if ($city != NULL && $payment != NULL) {
