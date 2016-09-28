@@ -469,7 +469,8 @@ section.calculator div.block-list-offer {
 }
 @media (max-width: 420px) {
   section.calculator div.block-list-offer {
-    padding-right: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
   section.calculator div.block-list-offer th {
     font-size: 10px;
