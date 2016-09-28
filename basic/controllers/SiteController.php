@@ -1736,6 +1736,13 @@ class SiteController extends Controller
 
                     ]
             );
+        Yii::$app->view->registerMetaTag(
+            [
+                'property' => 'yandex-verification',
+                'content' => '7c0cd0d864c795ca',
+
+                    ]
+            );
     }
 
     public function metaTagCalculator()
