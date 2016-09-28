@@ -423,6 +423,11 @@ section.calculator div.block-calculator div.block-slider h1 {
     font-size: 24px;
   }
 }
+@media (max-width: 420px) {
+  section.calculator div.block-calculator div.block-slider h1 {
+    font-size: 16px;
+  }
+}
 section.calculator div.block-calculator div.block-slider h5[name="lable-slider"] {
   color: #fff;
 }
@@ -462,6 +467,14 @@ section.calculator div.block-calculator div.block-slider span.ui-slider-handle {
 section.calculator div.block-list-offer {
   margin-top: 15px;
 }
+@media (max-width: 420px) {
+  section.calculator div.block-list-offer {
+    padding-right: 0px;
+  }
+  section.calculator div.block-list-offer th {
+    font-size: 10px;
+  }
+}
 section.calculator div.block-list-offer i[name="offer-info"] {
   cursor: pointer;
   font-size: 30px;
@@ -484,6 +497,11 @@ section.calculator div.block-list-offer tr[name="offer"] td.order a.btn-primary 
 @media (max-width: 767px) {
   section.calculator div.block-list-offer tr[name="info"] img {
     width: 30px;
+  }
+}
+@media (max-width: 420px) {
+  section.calculator div.block-list-offer tr[name="info"] img {
+    width: 25px;
   }
 }
 section.calculator div[name="list-near-cities"] {
@@ -536,6 +554,11 @@ section[name="what-we-do"] div.what-we-do div.bl2 {
     text-align: center;
     padding: 5px 0px;
     font-size: 20px;
+  }
+}
+@media (max-width: 420px) {
+  section[name="what-we-do"] div.what-we-do div.bl2 {
+    font-size: 14px;
   }
 }
 section[name="partners"] {

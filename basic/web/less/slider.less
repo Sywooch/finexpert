@@ -9,14 +9,22 @@ section[name = "slider"]{
 					top: 20%;
 					left: 10%;
 					right: 50%;
+
 					@media (max-width: 767px) {
 						 top:15%;
+					}
+					@media (max-width: 420px){
+						top: 5%;
 					}	
+					
 					div.title{
 						position: relative;
 						font-size: 30px;
 						@media (max-width: 767px) {
 						  	font-size: 20px;
+						}
+						@media (max-width: 420px){
+							font-size: 14px;
 						}	
 						font-weight: bold;
 					}
@@ -32,7 +40,10 @@ section[name = "slider"]{
 						font-size: 22px;
 						@media (max-width: 767px) {
 						  	font-size: 14px;
-						}	
+						}
+						@media (max-width: 420px) {
+						  	font-size: 10px;
+						}
 					}
 				}
 			}

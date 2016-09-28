@@ -8,6 +8,11 @@ section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-cap
     top: 15%;
   }
 }
+@media (max-width: 420px) {
+  section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption {
+    top: 5%;
+  }
+}
 section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.title {
   position: relative;
   font-size: 30px;
@@ -16,6 +21,11 @@ section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-cap
 @media (max-width: 767px) {
   section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.title {
     font-size: 20px;
+  }
+}
+@media (max-width: 420px) {
+  section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.title {
+    font-size: 14px;
   }
 }
 section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.second-slider {
@@ -31,6 +41,11 @@ section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-cap
 @media (max-width: 767px) {
   section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.description {
     font-size: 14px;
+  }
+}
+@media (max-width: 420px) {
+  section[name="slider"] div.carousel div.carousel-inner div.item div.carousel-caption div.description {
+    font-size: 10px;
   }
 }
 section[name="slider"] div.carousel a.carousel-control {
